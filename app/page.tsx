@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function page() {
@@ -7,7 +8,8 @@ export default function page() {
         <h1 className='text-6xl'>The best Journal App</h1>
         <p className='text-2xl text-white/60'> This is the best app to track your mood throughout your life. All you have to do is to be honest</p>
         <div>
-          <button>Get Started</button>
+          <Link href ='/journal'>
+          <button className='bg-blue-600 p-4 rounded-lg text-xl'>Get Started</button></Link>
         </div>
       </div>
     </div>
