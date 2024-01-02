@@ -1,5 +1,5 @@
 const NewUser = () => {
-    return <div>hi</div>
+    return <div>hii</div>
 }
 
 export default NewUser
