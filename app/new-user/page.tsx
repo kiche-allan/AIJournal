@@ -15,7 +15,7 @@ const createNewUser = async() => {
        await prisma.user.create({
         data: {
             clerkId:user.id,
-            email: user.email
+            email: user?.emailAddresses[0].emailAddress,
 
         }
        })
@@ -23,7 +23,7 @@ const createNewUser = async() => {
 
     redirect('/journal')
 }
-const NewUser = async() => {
+const NewUser = async () => {
     await createNewUser()
     return <div>....loading</div>
 }
