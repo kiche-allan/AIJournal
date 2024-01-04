@@ -1,19 +1,22 @@
+import { getUserByClerkID } from "@/utils/auth"
+import { prisma } from "@/utils/db"
 
 const getEntries = async () => {
-    const user = await currentUser()
-    const entries = await prisma.entry.findMany({
+    const user = await getUserByClerkID()
+    const entries = await prisma.journalEntry.findMany({
         where: {
-            userId: user.id as string,
+            userId: user.id,
         },
         orderBy: {
             createdAt: 'desc',
         },
     })
-    })
+    return entries
 
 }
 const JournalPage = () => {
-    return <div>Journal</div>
+    const entries = getEntries()
+    return <div></div>
     
 }
 
