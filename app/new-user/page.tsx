@@ -1,27 +1,31 @@
-import {prisma} from '@utils/db'
-import {auth} from '@clerk/nextjs'
+import {prisma} from '@/utils/db'
+import { currentUser} from '@clerk/nextjs'
+import { redirect } from 'next/navigation'
 
 
 const createNewUser = async() => {
     const user = await currentUser()
     const match = await prisma.user.findUnique({
         where: {
-            clerkId: user.id as String, 
+            clerkId: user.id as string, 
         },
     })
 
     if (!match) {
-       const user =  await prisma.user.create({
+       await prisma.user.create({
         data: {
-            ClerkId:user.id,
-            email: userAgent.email
+            clerkId:user.id,
+            email: user.email
 
         }
        })
     }
+
+    redirect('/journal')
 }
-const NewUser = () => {
-    return <div></div>
+const NewUser = async() => {
+    await createNewUser()
+    return <div>....loading</div>
 }
 
 export default NewUser
