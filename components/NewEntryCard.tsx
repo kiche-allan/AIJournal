@@ -1,4 +1,4 @@
-const NewEntryCard = ({ entry }) => {
+const NewEntryCard = () => {
     return <div>new entry</div>
 
 }
